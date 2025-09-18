@@ -1,2 +1,1 @@
-# Parcial---DOSW
-Desarrollo del parcial 1
+# Parcial primer corte - Felipe Calvache
