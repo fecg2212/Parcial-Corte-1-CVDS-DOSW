@@ -67,5 +67,10 @@ Tercera opción incorrecta (Crypto): Ingresamos solamente un dígito
 
 ![img_6.png](img_6.png)
 
+## 6. Implementación de pruebas unitarias
+Empezamos a crear las pruebas unitarias sobre las clases y métodos para conseguir un 80% de cobertura.
+
+![img_7.png](img_7.png)
+
 
 
