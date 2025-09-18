@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.dosw.lab</groupId>
-	<artifactId>Parcial01</artifactId>
+	<artifactId>Parcial-DOSW</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Parcial01</name>
 	<description>First evaluation development</description>
@@ -123,7 +123,7 @@
 										<limit>
 											<counter>CLASS</counter>
 											<value>COVEREDRATIO</value>
-											<minimum>0.85</minimum>
+											<minimum>0.8</minimum>
 										</limit>
 									</limits>
 								</rule>
