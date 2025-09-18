@@ -39,38 +39,45 @@ Paquete observer: En este paquete básicamente lo cree para que se gestione la l
 
 Paquete service: Acá prácticamente es dónde va a estar la lógica de diseño del caso de estudio.
 
-![img.png](img.png)
+![img.png](docs/imagenes/img.png)
 
 ### Evidencias de entrada y salida:
 Primera opción correcta (Tarjeta de crédito):
 
-![img_1.png](img_1.png)
+![img_1.png](docs/imagenes/img_1.png)
 
 Primera opción incorrecta (Tarjeta de crédito):
 Cuando intentamos poner tarjeta de identidad
 
-![img_2.png](img_2.png)
+![img_2.png](docs/imagenes/img_2.png)
 
 Segunda opción correcta (PayPal):
 
-![img_4.png](img_4.png)
+![img_4.png](docs/imagenes/img_4.png)
 
 Segunda opción incorrecta (PayPal): ingresamos un correo sin el arroba
 
-![img_3.png](img_3.png)
+![img_3.png](docs/imagenes/img_3.png)
 
 Tercera opción correcta (Crypto):
 
-![img_5.png](img_5.png)
+![img_5.png](docs/imagenes/img_5.png)
 
 Tercera opción incorrecta (Crypto): Ingresamos solamente un dígito
 
-![img_6.png](img_6.png)
+![img_6.png](docs/imagenes/img_6.png)
 
 ## 6. Implementación de pruebas unitarias
 Empezamos a crear las pruebas unitarias sobre las clases y métodos para conseguir un 80% de cobertura.
 
-![img_7.png](img_7.png)
+![img_7.png](docs/imagenes/img_7.png)
 
+## 7. Análisis de jacoco
+Ejecutamos las pruebas unitarias que realizamos y abrimos el index.html que se creo en la carpeta target.
+
+![img_9.png](docs/imagenes/img_9.png)
+
+## Ínidce de arranque
+Simplemente debes dirigirte a Parcial01Application y desde ahí empezará todo.
 
 

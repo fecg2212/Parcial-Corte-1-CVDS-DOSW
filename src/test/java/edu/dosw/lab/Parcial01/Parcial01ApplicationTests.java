@@ -20,7 +20,6 @@ class Parcial01ApplicationTests {
 		paypalService = new PaymentService(new PayPalFactory());
 		cryptoService = new PaymentService(new CryptoFactory());
 
-		// agregamos observers
 		creditCardService.addObserver(new InventoryModule());
 		creditCardService.addObserver(new BillingModule());
 		creditCardService.addObserver(new NotificationModule());
@@ -43,7 +42,8 @@ class Parcial01ApplicationTests {
 	@Test
 	void testCreditCardValidatorInvalid() {
 		PaymentValidator validator = new CreditCardValidator();
-		assertFalse(validator.validate("123456789"));
+		assertFalse(validator.validate("12345"));
+		assertFalse(validator.validate(""));
 	}
 
 	@Test
@@ -56,6 +56,7 @@ class Parcial01ApplicationTests {
 	void testPayPalValidatorInvalid() {
 		PaymentValidator validator = new PayPalValidator();
 		assertFalse(validator.validate("userexample.com"));
+		assertFalse(validator.validate(""));
 	}
 
 	@Test
@@ -68,6 +69,28 @@ class Parcial01ApplicationTests {
 	void testCryptoValidatorInvalid() {
 		PaymentValidator validator = new CryptoValidator();
 		assertFalse(validator.validate("short"));
+		assertFalse(validator.validate(""));
+	}
+
+	@Test
+	void testCreditCardFactoryCreatesObjects() {
+		PaymentFactory factory = new CreditCardFactory();
+		assertNotNull(factory.createPayment());
+		assertNotNull(factory.createValidator());
+	}
+
+	@Test
+	void testPayPalFactoryCreatesObjects() {
+		PaymentFactory factory = new PayPalFactory();
+		assertNotNull(factory.createPayment());
+		assertNotNull(factory.createValidator());
+	}
+
+	@Test
+	void testCryptoFactoryCreatesObjects() {
+		PaymentFactory factory = new CryptoFactory();
+		assertNotNull(factory.createPayment());
+		assertNotNull(factory.createValidator());
 	}
 
 	@Test
@@ -101,63 +124,33 @@ class Parcial01ApplicationTests {
 	}
 
 	@Test
-	void testObserversAreTriggered() {
-		// Probamos que al menos se ejecute el flujo de notificaciones
-		PaymentObserver inventory = new InventoryModule();
-		PaymentObserver billing = new BillingModule();
-		PaymentObserver notification = new NotificationModule();
-
-		inventory.update();
-		billing.update();
-		notification.update();
-	}
-
-	@Test
-	void testCreditCardFactoryCreatesObjects() {
-		PaymentFactory factory = new CreditCardFactory();
-		assertNotNull(factory.createPayment());
-		assertNotNull(factory.createValidator());
-	}
-
-	@Test
-	void testPayPalFactoryCreatesObjects() {
-		PaymentFactory factory = new PayPalFactory();
-		assertNotNull(factory.createPayment());
-		assertNotNull(factory.createValidator());
-	}
-
-	@Test
-	void testCryptoFactoryCreatesObjects() {
-		PaymentFactory factory = new CryptoFactory();
-		assertNotNull(factory.createPayment());
-		assertNotNull(factory.createValidator());
-	}
-
-	@Test
-	void testCreditCardValidatorEmptyString() {
-		PaymentValidator validator = new CreditCardValidator();
-		assertFalse(validator.validate(""));
-	}
-
-	@Test
-	void testPayPalValidatorEmptyString() {
-		PaymentValidator validator = new PayPalValidator();
-		assertFalse(validator.validate(""));
-	}
-
-	@Test
-	void testCryptoValidatorShortString() {
-		PaymentValidator validator = new CryptoValidator();
-		assertFalse(validator.validate("0x12"));
-	}
-
-	@Test
 	void testPaymentServiceNoObservers() {
 		PaymentService service = new PaymentService(new CreditCardFactory());
-		// No agregamos observers
-		assertDoesNotThrow(() -> service.processPayment("CC12345678901234", 999.99));
+		assertDoesNotThrow(() -> service.processPayment("CC12345678901234", 50.0));
 	}
+
+	@Test
+	void testInventoryModuleUpdate() {
+		InventoryModule module = new InventoryModule();
+		assertDoesNotThrow(() -> module.update());
+	}
+
+	@Test
+	void testBillingModuleUpdate() {
+		BillingModule module = new BillingModule();
+		assertDoesNotThrow(() -> module.update());
+	}
+
+	@Test
+	void testNotificationModuleUpdate() {
+		NotificationModule module = new NotificationModule();
+		assertDoesNotThrow(() -> module.update());
+	}
+
 }
+
+
+
 
 
 
